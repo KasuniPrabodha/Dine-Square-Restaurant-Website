@@ -16,7 +16,7 @@ Smart Dining: The Future of Restaurant Experiences. A modern, user-friendly rest
 - **Deployment:** GitHub Pages
 
 ## 📸 Screenshots
-![Home Page](Screenshot/Home_Page.png)
+![Home Page](Screenshots/Home_Page.png)
 ![Reservations](Screenshots/Reservations.png)
 ![GiftCrads](Screenshots/GiftCards.png)
 
