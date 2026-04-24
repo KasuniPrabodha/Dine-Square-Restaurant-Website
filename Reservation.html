@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'rel='stylesheet'/>
+
+    <style>
+        body{
+                background-image: url('photos/image.jpg');
+                background-size:cover;
+                background-position:center;
+                background-repeat:no-repeat;
+                position: relative;
+                height: 95vh;
+                width: 100vw;
+                display: flex;
+                }
+        /*popup background*/
+        .popup{
+            display:none;
+            position: fixed;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*popup content box*/
+        .popup-content{
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /*close button*/
+        .close{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        /*form styling*/
+        form lable{
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        form input{
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form button{
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button:hover{
+            background-color: #218838;
+        }
+        .openpop{
+            font-size: 30px;
+            text-align: center;
+            font-family: 'Albertus Medium', 'Aachen-Bold';
+            padding: 10px 600px 10px 600px;
+            align-items: center;
+            margin-top: 150px;
+        }
+        .openpop:hover{
+            background-color: #cdc955;
+        }
+        
+        .topic{
+            font-size: 50px;
+            position: relative;
+            text-decoration: overline;
+            top: 50px;
+        }
+        .Description{
+            position: relative;
+            left:100px;
+        }
+        .pt2{
+            position: absolute;
+            width: 400px;
+            height: 300px;
+            left: 1000px;
+            top: 200px;
+            z-index: 2;
+        }
+        .pt3{
+            position: absolute;
+            width: 500px;
+            height: 300px;
+            left: 660px;
+            top: 140px;
+            z-index: 1;
+        }
+        .hidden{
+            display: none;
+        }
+        .burger1{
+            font-size: 50px;
+            position: fixed;
+            left: 260px;
+            top: 703px;
+            color: #040404;
+        }
+        .blur-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 20px;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-menu ul {
+           list-style: none;
+           display: flex;
+           gap: 20px;
+           margin: 0;
+           padding: 0;
+        }
+        .nav-menu ul li {
+           display: inline;
+           padding-right:120px;
+         }
+        .nav-menu ul li a {
+           text-decoration: none;
+           color: #333;
+           font-weight: bold;
+           font-size: 1em;
+           transition: color 0.3s ease;
+        }
+        .nav-menu ul li a:hover {
+           color: rgb(243, 108, 18);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="body-background">
+    
+        <header class="blur-header">
+            <div class="header-container">
+              <nav class="nav-menu">
+                <ul>
+                  <li><a href="FINAL.html">Home</a></li>
+                  <li><a href="AboutStory.html">About</a></li>
+                  <li><a href="Reservation.html">Reservations</a></li>
+                  <li><a href="GiftCards.html">Gift Cards</a></li>
+                  <li><a href="Gallery.html">Gallery</a></li>
+                  <li><a href="CustomerReviews.html">Customer Reviews</a></li>
+                </ul>
+              </nav>
+            </div>
+          </header>
+
+    <div class="topic"><h1>Reservations</h1></div>
+    <p class="burger1"><i class='bx bxs-bowl-hot'></i></p>
+
+    <img src="photos/photo2.jpg" class="pt2 hide-on-popup">
+    <img src="photos/photo3.jpg" class="pt3 hide-on-popup">
+
+    <div class="Description"><p>We take reservations for breakfast,lunch & dinner. To make a reservation, Please call
+    <br>us between 10am-6pm, Monday to Friday.</p>
+    <p>We do not book the bar area - we leave this for walk-in guests to ensure that<br>we always offer some tables for those
+     who have not booked.</p>
+     <p>(+94) 70 253 7800 / (+94) 159 7550</p>
+    </div>
+
+    <button id="open-popup-btn" class="openpop">Make A Reservation</button>
+
+    <div id="popup-form" class="popup">
+        <div class="popup-content">
+            <span id="close-popup-btn" class="close">&times;</span>
+            <h2>Rservation Form</h2>
+            <form>
+                <lable for="name">Name:</lable>
+                <input type="text" id="name" name="name" required>
+
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <lable for="time">Time:</lable>
+                <input type="time" id="time" name="time" required>
+
+                <label for="people">Number of People</label>
+                <input type="number" id="people" name="people" min="1" required>
+
+                <button type="submit">Reserve Now</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <script>
+        //Get element
+        const openPopupBtn=document.getElementById('open-popup-btn');
+        const popupForm=document.getElementById('popup-form');
+        const closePopupBtn=document.getElementById('close-popup-btn');
+        const imagesToHide=document.querySelectorAll('.hide-on-popup');
+
+        //open the popup
+        openPopupBtn.addEventListener('click',()=>{
+            popupForm.style.display='flex';
+            imagesToHide.forEach(img=>img.classList.add('hidden'));
+        });
+
+        //close the popup
+        closePopupBtn.addEventListener('click',()=>{
+            popupForm.style.display='none';
+            imagesToHide.forEach(img => img.classList.remove('hidden'));
+        });
+
+        //close popup when clicking outside the content box
+        window.addEventListener('click',(event)=>{
+            if(event.target===popupForm){
+                popupForm.style.display='none';
+                imagesToHide.forEach(img => img.classList.remove('hidden'));
+            }
+        });
+    </script>
+
+    
+</body>
+</html>

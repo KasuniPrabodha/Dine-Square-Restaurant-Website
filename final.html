@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <link rel="stylesheet" href="stylesheetjk.css">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'rel='stylesheet'/>
+
+</head>
+<body class="body-background">
+
+    <!--header-->
+    <div>
+    <p span class="name"><b>DINE SQUARE<i class='bx bxs-bowl-hot'></i></b></span>
+        
+    </p>
+    <header class="blur-header">
+        <div class="header-container">
+          <nav class="nav-menu">
+            <ul>
+              <li><a href="FINAL.html">Home</a></li>
+              <li><a href="AboutStory.html">AboutUs</a></li>
+              <li><a href="Reservation.html">Reservations</a></li>
+              <li><a href="GiftCards.html">GiftCards</a></li>
+              <li><a href="Gallery.html">Gallery</a></li>
+              <li><a href="CustomerReviews.html">CustomerReviews</a></li>
+              <li>
+                <a href="#" onclick="openSettingsPopup()">
+                    <i class="bx bx-cart-alt"></i>
+                </a>
+            </li>
+            
+            
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </div>
+
+    <!-- Settings Popup -->
+    <div class="settings-popup" id="settingsPopup">
+        <span class="close-btn" onclick="closeSettingsPopup()">&times;</span>
+        <h2><u>Payment Settings</u></h2>
+        <h5>Make sure to select your payment method before every payment session</h5>
+        <form id="paymentForm" onsubmit="savePaymentSettings(event)">
+            <label for="paymentMethod">Select Payment Method:</label>
+            <select id="paymentMethod" onchange="toggleCardFields()" required>
+                <option value="">Select Payment Option</option>
+                <option value="cod">Cash on Delivery</option>
+                <option value="creditCard">Card Payments</option>
+            </select>
+
+            <div class="credit-card-details" id="creditCardDetails">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" pattern="\d{16}" maxlength="16">
+
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" placeholder="MM/YY" pattern="\d{2}/\d{2}">
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" placeholder="123" pattern="\d{3}" maxlength="3">
+            </div>
+
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+
+    <div id="popup-form" class="popup">
+        <div class="popup-content">
+            <span id="close-popup-btn" class="close">&times;</span>
+            <h2><em><u>Welcome To Our Family!</u></em></h2>
+            <h3>Join to our community & get daily updates for free</h3><br>
+            <form>
+                <lable for="name">Your Name:</lable>
+                <input type="text" id="name" name="name" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        //Get element
+        const openPopupBtn=document.getElementById('open-popup-btn');
+        const popupForm=document.getElementById('popup-form');
+        const closePopupBtn=document.getElementById('close-popup-btn');
+        const imagesToHide=document.querySelectorAll('.hide-on-popup');
+
+        //open the popup
+        openPopupBtn.addEventListener('click',()=>{
+            popupForm.style.display='flex';
+            imagesToHide.forEach(img=>img.classList.add('hidden'));
+        });
+
+        //close the popup
+        closePopupBtn.addEventListener('click',()=>{
+            popupForm.style.display='none';
+            imagesToHide.forEach(img => img.classList.remove('hidden'));
+        });
+
+        //close popup when clicking outside the content box
+        window.addEventListener('click',(event)=>{
+            if(event.target===popupForm){
+                popupForm.style.display='none';
+                imagesToHide.forEach(img => img.classList.remove('hidden'));
+            }
+        });
+        // Open settings popup
+function openSettingsPopup() {
+    document.getElementById('settingsPopup').style.display = 'block';
+}
+
+// Close settings popup
+function closeSettingsPopup() {
+    document.getElementById('settingsPopup').style.display = 'none';
+}
+
+// Toggle credit card fields
+function toggleCardFields() {
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    const cardDetails = document.getElementById('creditCardDetails');
+    cardDetails.style.display = paymentMethod === 'creditCard' ? 'block' : 'none';
+}
+
+// Save payment settings
+function savePaymentSettings(event) {
+    event.preventDefault();
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    const settingsIcon = document.getElementById('settingsIcon');
+    const creditCardIcon = document.getElementById('creditCardIcon');
+    const moneyIcon = document.getElementById('moneyIcon');
+
+    // Reset icons
+    creditCardIcon.classList.remove('selected');
+    moneyIcon.classList.remove('selected');
+
+    if (paymentMethod === 'creditCard') {
+        const cardNumber = document.getElementById('cardNumber').value;
+        alert(`Payment method saved as Card Payment\nCard Number: ${cardNumber}`);
+        settingsIcon.style.display = 'none'; // Hide settings icon
+        creditCardIcon.classList.add('selected'); // Highlight card icon
+        localStorage.setItem('paymentMethod', 'creditCard'); // Save to localStorage
+    } else if (paymentMethod === 'cod') {
+        alert('Payment method saved as Cash on Delivery');
+        settingsIcon.style.display = 'none'; // Hide settings icon
+        moneyIcon.classList.add('selected'); // Highlight money icon
+        localStorage.setItem('paymentMethod', 'cod'); // Save to localStorage
+    } else {
+        alert('Please select a valid payment method.');
+        settingsIcon.style.display = 'block'; // Show settings icon (if invalid input)
+        localStorage.setItem('paymentMethod', 'default'); // Save to localStorage
+    }
+
+    closeSettingsPopup();
+}
+
+
+// Update icons on page load
+function updateIconOnLoad() {
+    const savedPaymentMethod = localStorage.getItem('paymentMethod');
+    const settingsIcon = document.getElementById('settingsIcon');
+    const creditCardIcon = document.getElementById('creditCardIcon');
+    const moneyIcon = document.getElementById('moneyIcon');
+
+    // Reset icons
+    creditCardIcon.classList.remove('selected');
+    moneyIcon.classList.remove('selected');
+
+    if (savedPaymentMethod === 'creditCard') {
+        settingsIcon.className = 'bx bxs-credit-card'; // Set settings icon
+        creditCardIcon.classList.add('selected'); // Highlight card icon
+    } else if (savedPaymentMethod === 'cod') {
+        settingsIcon.className = 'bx bx-money'; // Set settings icon
+        moneyIcon.classList.add('selected'); // Highlight money icon
+    } else {
+        settingsIcon.className = 'bx bxs-cog'; // Default settings icon
+    }
+}
+
+// Call updateIconOnLoad when the page loads
+document.addEventListener('DOMContentLoaded', updateIconOnLoad);
+
+    </script>
+
+    <div class="text-box1"><div class="bounce1"><a href="bakery.html">BAKERY ITEMS</a></div></div>
+
+    <!--menu items-->
+    <div class="text-box">
+        <div class="bounce"><a href="breakfastMenu.html">BREAKFAST</a></div>
+        <div class="bounce"><a href="lunchMenu.html">LUNCH</a></div>
+        <div class="bounce"><a href="dinnerMenu.html">DINNER</a></div>
+    </div>
+
+    <!--contact details-->
+    <section>
+        <div class="number">
+            <h2>Contact Us</h2>
+            <p>Visit us at: 56/B BrownsHill, BeachRd, Matara</p>
+            <p>Call: +94 70 253 7800</p>
+            <p><a href="#" class="links1"><i class='bx bxl-twitter' ></i></a>
+                <a href="#" class="links1"><i class='bx bxl-facebook'></i></a>
+                <a href="https://www.instagram.com/dine_sqr?igsh=NWpsNTMxbGg1ZW5m&utm_source=qr" class="links1"><i class='bx bxl-instagram'></i></a></p>
+        </div>
+    </section>
+
+    <!--footer-->
+    <footer>
+        <div class="number">
+            <p>&copy; 2024 Dine Square | Developed by Kasuni Prabodha | All Rights Reserved</p>
+        </div>
+    </footer>
+
+</body>
+</html>

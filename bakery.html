@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakfast Menu - Dine Square</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: rgb(246, 224, 82);
+            text-align: center;
+            padding: 20px;
+            margin-top: 90px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .header1 {
+            background-color: rgb(246, 224, 82);
+            text-align: center;
+            padding: 1px;
+            margin: 15px;
+        }
+        .product {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 15px;
+            padding: 15px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 170px;
+            height: 100px;
+            border-radius: 8px;
+            margin-right: 20px; 
+        }
+        .product-info {
+            flex-grow: 1; 
+            padding-right: 20px;
+        }
+        .product h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .product p {
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+        .price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: red;
+            margin-top: 10px;
+        }
+        button {
+            background-color: rgb(246, 224, 82);
+            color: rgb(13, 13, 13);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: rgb(146, 127, 2);
+        }
+        .button2 {
+            background-color: rgb(246, 224, 82);
+            color: rgb(13, 13, 13);
+            padding: 10px 20px;
+            margin-right: 6px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .button2:hover {
+            background-color: rgb(146, 127, 2);
+        }
+        .cart {
+            background-color: #fff;
+	        position:relative;
+	        float:right;
+	        width:500px;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .cart ul {
+            list-style-type: none;
+        }
+        .cart p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .blur-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 20px;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-menu ul {
+           list-style: none;
+           display: flex;
+           gap: 20px;
+           margin: 0;
+           padding: 0;
+        }
+        .nav-menu ul li {
+           display: inline;
+           padding-right:120px;
+         }
+        .nav-menu ul li a {
+           text-decoration: none;
+           color: #333;
+           font-weight: bold;
+           font-size: 1em;
+           transition: color 0.3s ease;
+        }
+        .nav-menu ul li a:hover {
+           color: rgb(243, 108, 18);
+        }
+        .footer {
+           background-color: #333;
+           color: #fff;
+           text-align: center;
+           padding: 10px 0;
+           position: relative;
+           bottom: 0;
+           width: 100%;
+           margin-top: 270px;
+         }
+    </style>
+</head>
+<body>
+   <header class="blur-header">
+      <div class="header-container">
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="FINAL.html">Home</a></li>
+            <li><a href="AboutStory.html">About</a></li>
+            <li><a href="Reservation.html">Reservations</a></li>
+            <li><a href="GiftCards.html">Gift Cards</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="CustomerReviews.html">Customer Reviews</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="header">
+        <h1>Bakery Items</h1>
+        <p>Freshly Baked Delights Delivered to Your Door – Order Your Favorite Bakery Items Online Today...!</p>
+    </div>
+
+    <div class="header1"><h2>Breads</h2></div>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/bread.jpg" alt="Fresh Bread">
+           <div class="product-info">
+              <h3>Fresh Bread</h3>
+              <p class="price">Rs.100.00</p>
+           </div>
+           <button onclick="addToCart('Fresh Bread', 100.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Rye-Bread.jpg" alt="Rye_Bread">
+           <div class="product-info">
+              <h3>Rye Bread</h3>
+              <p class="price">Rs.150.00</p>
+           </div>
+           <button onclick="addToCart('Rye_Bread', 150.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Raisin-Bread.jpg" alt="Raisin Bread">
+           <div class="product-info">
+              <h3>Raisin Bread</h3>
+              <p class="price">Rs.180.00</p>
+           </div>
+           <button onclick="addToCart('Raisin Bread', 180.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <div class="header1"><h2>Cakes</h2></div>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/ButterCake.jpg" alt="Butter Cake">
+           <div class="product-info">
+              <h3>Butter Cake</h3>
+              <p class="price">Rs.700.00 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Butter Cake', 700.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/RibbonCake.jpeg" alt="Ribbon Cake">
+           <div class="product-info">
+              <h3>Ribbon Cake</h3>
+              <p class="price">Rs.800.00 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Ribbon Cake', 800.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/chocolate-cake.jpg" alt="Chocolate Cake">
+           <div class="product-info">
+              <h3>Chocolate Cake</h3>
+              <p class="price">Rs.900 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Chocolate Cake', 900.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/chocolate-swiss-roll.jpg" alt="Chocolate Swiss Roll">
+           <div class="product-info">
+              <h3>Chocolate Swiss Roll</h3>
+              <p class="price">Rs.850.00 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Chocolate Swiss Roll', 850.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/strawberry-swiss-rolls.jpg" alt="Strawberry & Swiss Roll">
+           <div class="product-info">
+              <h3>Strawberry & Swiss Roll</h3>
+              <p class="price">Rs.900.00 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Strawberry & Swiss Roll', 900.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Strawberry-Cake.jpg" alt="Strawberry Cake">
+           <div class="product-info">
+              <h3>Strawberry Cake</h3>
+              <p class="price">Rs.1000.00 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Strawberry Cake', 1000.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/ChocolateStrawberryCake.jpg" alt="Chocolate & Strawberry Cake">
+           <div class="product-info">
+              <h3>Chocolate & Strawberry Cake</h3>
+              <p class="price">Rs.1400.00 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Chocolate & Strawberry Cake', 1400.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/CrepeCake.jpg" alt="Crepe Cake">
+           <div class="product-info">
+              <h3>Crepe Cake</h3>
+              <p class="price">Rs.1600.00 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Crepe Cake', 1600.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/CarrotCake.jpg" alt="Carrot Cake">
+           <div class="product-info">
+              <h3>Carrot Cake</h3>
+              <p class="price">Rs.1800.00 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Carrot Cake', 1800.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/EgglessFreshFuitCake.jpg" alt="Eggless Fresh Fruit Cake">
+           <div class="product-info">
+              <h3>Eggless Fresh Fruit Cake</h3>
+              <p class="price">Rs.2100.00 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Eggless Fresh Fruit Cake', 2100.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/MilkChocolateBarCake.jpg" alt="Milk Chocolate bar Cake">
+           <div class="product-info">
+              <h3>Milk Chocolate bar Cake</h3>
+              <p class="price">Rs.2400.00 (1kg)</p>
+           </div>
+           <button onclick="addToCart('Milk Chocolate bar Cake', 2400.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <div class="header1"><h2>Pies</h2></div>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Meat-Pie.jpg" alt="Meat Pie">
+           <div class="product-info">
+              <h3>Meat Pie</h3>
+              <p class="price">Rs.550.00</p>
+           </div>
+           <button onclick="addToCart('Meat Pie', 550.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/chocolate-chess-pie.jpg" alt="Chocolate Chess Pie">
+           <div class="product-info">
+              <h3>Chocolate Chess Pie</h3>
+              <p class="price">Rs.600.00</p>
+           </div>
+           <button onclick="addToCart('Chocolate Chess Pie', 600.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/cherry-pie.jpg" alt="Cherry Pie">
+           <div class="product-info">
+              <h3>Cherry Pie</h3>
+              <p class="price">Rs.700.00</p>
+           </div>
+           <button onclick="addToCart('Cherry Pie', 700.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Blueberry-Pie.jpg" alt="Blueberry Pie">
+           <div class="product-info">
+              <h3>Blueberry Pie</h3>
+              <p class="price">Rs.800.00</p>
+           </div>
+           <button onclick="addToCart('Blueberry Pie', 800.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <div class="header1"><h2>Burgers</h2></div>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Chicken Burgers.jpg" alt="Chicken Burger">
+           <div class="product-info">
+              <h3>Chicken Burger</h3>
+              <p class="price">Rs.500.00</p>
+           </div>
+           <button onclick="addToCart('Chicken Burger', 500.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/beef bulgogi burgers.jpg" alt="Beef Bulgogi Burger">
+           <div class="product-info">
+              <h3>Beef Bulgogi Burger</h3>
+              <p class="price">Rs.600.00</p>
+           </div>
+           <button onclick="addToCart('Beef Bulgogi Burger', 600.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/sausage smash burgers.jpg" alt="Sausage Smashed Burger">
+           <div class="product-info">
+              <h3>Sausage Smashed Burger</h3>
+              <p class="price">Rs.700.00</p>
+           </div>
+           <button onclick="addToCart('Sausage Smashed Burger', 700.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Hatch chilie smash burgers.jpg" alt="Hatch Chilie Smashed Burger">
+           <div class="product-info">
+              <h3>Hatch Chilie Smashed Burger</h3>
+              <p class="price">Rs.800.00</p>
+           </div>
+           <button onclick="addToCart('Hatch Chilie Smashed Burger', 800.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Wisconsin-Butter-Burgers.webp" alt="Wisconsin Butter Burger">
+           <div class="product-info">
+              <h3>Wisconsin Butter Burger</h3>
+              <p class="price">Rs.900.00</p>
+           </div>
+           <button onclick="addToCart('Wisconsin Butter Burger', 900.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Smashed Cheese burger.webp" alt="Smashed Cheese Burger">
+           <div class="product-info">
+              <h3>Smashed Cheese Burger</h3>
+              <p class="price">Rs.1000.00</p>
+           </div>
+           <button onclick="addToCart('Smashed Cheese Burger', 1000.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Beetroot Lamb Burger.jpg" alt="Beetroot Lamb Burger">
+           <div class="product-info">
+              <h3>Beetroot Lamb Burger</h3>
+              <p class="price">Rs.1100.00</p>
+           </div>
+           <button onclick="addToCart('Beetroot Lamb Burger', 1100.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Submarine-Tuna.jpg" alt="Tuna Submarine">
+           <div class="product-info">
+              <h3>Tuna Submarine</h3>
+              <p class="price">Rs.1300.00</p>
+           </div>
+           <button onclick="addToCart('Tuna Submarine', 1300.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/chicken_submarine.jpeg" alt="Chicken Submarine">
+           <div class="product-info">
+              <h3>Chicken Submarine</h3>
+              <p class="price">Rs.1500.00</p>
+           </div>
+           <button onclick="addToCart('Chicken Submarine', 1500.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <div class="header1"><h2>Other Items</h2></div>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/chips.jpeg" alt="Potato Chips">
+           <div class="product-info">
+              <h3>Potato Chips</h3>
+              <p class="price">Rs.500.00</p>
+           </div>
+           <button onclick="addToCart('Potato Chips', 500.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/brezel.jpg" alt="Brezel">
+           <div class="product-info">
+              <h3>Brezel</h3>
+              <p class="price">Rs.200.00</p>
+           </div>
+           <button onclick="addToCart('Brezel', 200.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Waffel.jpg" alt="Waffel">
+           <div class="product-info">
+              <h3>Waffel</h3>
+              <p class="price">Rs.300.00</p>
+           </div>
+           <button onclick="addToCart('Waffel', 300.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Sesame_seed_buns.jpg" alt="Saseme Seed Buns">
+           <div class="product-info">
+              <h3>Saseme Seed Buns</h3>
+              <p class="price">Rs.90.00</p>
+           </div>
+           <button onclick="addToCart('Saseme Seed Buns', 90.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/fishbun.jpg" alt="Fish Buns">
+           <div class="product-info">
+              <h3>Fish Buns</h3>
+              <p class="price">Rs.100.00</p>
+           </div>
+           <button onclick="addToCart('Fish Buns', 100.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/sandwich.avif" alt="Sandwiches">
+           <div class="product-info">
+              <h3>Sandwiches</h3>
+              <p class="price">Rs.120.00</p>
+           </div>
+           <button onclick="addToCart('Sandwiches', 120.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/samosa1.jpg" alt="Samosas">
+           <div class="product-info">
+              <h3>Samosas</h3>
+              <p class="price">Rs.100.00</p>
+           </div>
+           <button onclick="addToCart('Samosas', 100.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/pastries.jpg" alt="Pastries">
+           <div class="product-info">
+              <h3>Pastries</h3>
+              <p class="price">Rs.120.00</p>
+           </div>
+           <button onclick="addToCart('Pastries', 120.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/donuts.webp" alt="Donuts">
+           <div class="product-info">
+              <h3>Donuts</h3>
+              <p class="price">Rs.250.00</p>
+           </div>
+           <button onclick="addToCart('Donuts', 250.00)">Add to Cart</button>
+        </div>
+    </section>
+
+    <div class="header1"><h2>Pizza</h2></div>
+
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/classic-cheese-pizza.jpg" alt="Classic Cheese Pizza">
+           <div class="product-info">
+              <h3>Classic Cheese Pizza</h3>
+           </div>
+           <button class="button2" onclick="addToCart('Classic Cheese Pizza (Personal)', 500.00)">Personal Size AddtoCart-Rs,500.00</button>
+           <button class="button2" onclick="addToCart('Classic Cheese Pizza (Small)', 700.00)">Small Size AddtoCart-Rs700.00</button>
+           <button class="button2" onclick="addToCart('Classic Cheese Pizza (Medium)', 900.00)">Medium Size AddtoCart-Rs.900.00</button>
+           <button class="button2" onclick="addToCart('Classic Cheese Pizza (Large)', 1100.00)">Large Size AddtoCart-Rs.1100.00</button>
+           <button class="button2" onclick="addToCart('Classic Cheese Pizza (X-Large)', 1300.00)">X-Large Size AddtoCart-Rs.1300.00</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Chicken pizza.jpg" alt="Chicken Pizza">
+           <div class="product-info">
+              <h3>Chicken Pizza</h3>
+           </div>
+           <button class="button2" onclick="addToCart('Chicken Pizza (Personal)', 600.00)">Personal Size AddtoCart-Rs,600.00</button>
+           <button class="button2" onclick="addToCart('Chicken Pizza (Small)', 900.00)">Small Size AddtoCart-Rs900.00</button>
+           <button class="button2" onclick="addToCart('Chicken Pizza (Medium)', 1500.00)">Medium Size AddtoCart-Rs.1500.00</button>
+           <button class="button2" onclick="addToCart('Chicken Pizza (Large)', 2000.00)">Large Size AddtoCart-Rs.2000.00</button>
+           <button class="button2" onclick="addToCart('Chicken Pizza (X-Large)', 2200.00)">X-Large Size AddtoCart-Rs.2200.00</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Chicken-Alfredo-Pizza.jpeg" alt="Chicken Alfredo Pizza">
+           <div class="product-info">
+              <h3>Chicken Alfredo Pizza</h3>
+           </div>
+           <button class="button2" onclick="addToCart('Chicken Alfredo Pizza (Personal)', 600.00)">Personal Size AddtoCart-Rs.600.00</button>
+           <button class="button2" onclick="addToCart('Chicken Alfredo Pizza (Small)', 800.00)">Small Size AddtoCart-Rs.800.00</button>
+           <button class="button2" onclick="addToCart('Chicken Alfredo Pizza (Medium)', 1400.00)">Medium Size AddtoCart-Rs.1400.00</button>
+           <button class="button2" onclick="addToCart('Chicken Alfredo Pizza (Large)', 1900.00)">Large Size AddtoCart-Rs.1900.00</button>
+           <button class="button2" onclick="addToCart('Chicken Alfredo Pizza (X-Large)', 2300.00)">X-Large Size AddtoCart-Rs.2300.00</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/pepperoni-pizza.jpg" alt="Pepperoni Pizza">
+           <div class="product-info">
+              <h3>Pepperoni Pizza</h3>
+           </div>
+           <button class="button2" onclick="addToCart('Pepperoni Pizza (Personal)', 400.00)">Personal Size AddtoCart-Rs.400.00</button>
+           <button class="button2" onclick="addToCart('Pepperoni Pizza (Small)', 600.00)">Small Size AddtoCart-Rs.600.00</button>
+           <button class="button2" onclick="addToCart('Pepperoni Pizza (Medium)', 900.00)">Medium Size AddtoCart-Rs.900.00</button>
+           <button class="button2" onclick="addToCart('Pepperoni Pizza (Large)', 1300.00)">Large Size AddtoCart-Rs.1300.00</button>
+           <button class="button2" onclick="addToCart('Pepperoni Pizza (X-Large)', 1800.00)">X-Large Size AddtoCart-Rs.1800.00</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/sausage & vegetable-pizza.jpg" alt="Sausage & Vegetable Pizza">
+           <div class="product-info">
+              <h3>Sausage & Vegetable Pizza</h3>
+           </div>
+           <button class="button2" onclick="addToCart('Sausage & Vegetable Pizza (Personal)', .00)">Personal Size AddtoCart-Rs.600.00</button>
+           <button class="button2" onclick="addToCart('Sausage & Vegetable Pizza (Small)', 800.00)">Small Size AddtoCart-Rs.800.00</button>
+           <button class="button2" onclick="addToCart('Sausage & Vegetable Pizza (Medium)', 1200.00)">Medium Size AddtoCart-Rs.1200.00</button>
+           <button class="button2" onclick="addToCart('Sausage & Vegetable Pizza (Large)', 1800.00)">Large Size AddtoCart-Rs.1800.00</button>
+           <button class="button2" onclick="addToCart('Sausage & Vegetable Pizza (X-Large)', 2000.00)">X-Large Size AddtoCart-Rs.2000.00</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Napoli Artisan Pizza.jpg" alt="Napoli Arstisan Pizza">
+           <div class="product-info">
+              <h3>Napoli Arstisan Pizza</h3>
+           </div>
+           <button class="button2" onclick="addToCart('Napoli Arstisan Pizza (Personal)', .00)">Personal Size AddtoCart-Rs.400.00</button>
+           <button class="button2" onclick="addToCart('Napoli Arstisan Pizza (Small)', 800.00)">Small Size AddtoCart-Rs.800.00</button>
+           <button class="button2" onclick="addToCart('Napoli Arstisan Pizza (Medium)', 1100.00)">Medium Size AddtoCart-Rs.1100.00</button>
+           <button class="button2" onclick="addToCart('Napoli Arstisan Pizza (Large)', 1800.00)">Large Size AddtoCart-Rs.1800.00</button>
+           <button class="button2" onclick="addToCart('Napoli Arstisan Pizza (X-Large)', 2600.00)">X-Large Size AddtoCart-Rs.2600.00</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/pork.jpg" alt="Spicy Pork Pizza">
+           <div class="product-info">
+              <h3>Spicy Pork Pizza</h3>
+           </div>
+           <button class="button2" onclick="addToCart('Spicy Pork Pizza (Personal)', .00)">Personal Size AddtoCart-Rs.700.00</button>
+           <button class="button2" onclick="addToCart('Spicy Pork Pizza (Small)', 1100.00)">Small Size AddtoCart-Rs.1100.00</button>
+           <button class="button2" onclick="addToCart('Spicy Pork Pizza (Medium)', 1900.00)">Medium Size AddtoCart-Rs.1900.00</button>
+           <button class="button2" onclick="addToCart('Spicy Pork Pizza (Large)', 2500.00)">Large Size AddtoCart-Rs.2500.00</button>
+           <button class="button2" onclick="addToCart('Spicy Pork Pizza (X-Large)', 3100.00)">X-Large Size AddtoCart-Rs.3100.00</button>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <div class="product">
+           <img src="photos/Beef-Pizza.jpg" alt="Barbecue Beef Pizza">
+           <div class="product-info">
+              <h3>Barbecue Beef Pizza</h3>
+           </div>
+           <button class="button2" onclick="addToCart('Barbecue Beef Pizza (Personal)', 800.00)">Personal Size AddtoCart-Rs.800.00</button>
+           <button class="button2" onclick="addToCart('Barbecue Beef Pizza (Small)', 1500.00)">Small Size AddtoCart-Rs.1500.00</button>
+           <button class="button2" onclick="addToCart('Barbecue Beef Pizza (Medium)', 2000.00)">Medium Size AddtoCart-Rs.2000.00</button>
+           <button class="button2" onclick="addToCart('Barbecue Beef Pizza (Large)', 3000.00)">Large Size AddtoCart-Rs.3000.00</button>
+           <button class="button2" onclick="addToCart('Barbecue Beef Pizza (X-Large)', 3900.00)">X-Large Size AddtoCart-Rs.3900.00</button>
+        </div>
+    </section>
+
+    <section class="cart">
+        <h2>Your Cart</h2>
+        <form>
+         <label for="Address">Delivery Address: </label>
+         <input type="address" id="address" name="address" required>
+        </form>
+        <ul id="cart-items"></ul>
+        <p id="total-price">Total: Rs. 0.00</p>
+        <button onclick="checkout()">Checkout</button>
+    </section>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(itemName, price) {
+            cart.push({ name: itemName, price: price });
+            total += price;
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsList = document.getElementById('cart-items');
+            cartItemsList.innerHTML = '';
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - Rs. ${item.price.toFixed(2)}`;
+                cartItemsList.appendChild(listItem);
+            });
+            document.getElementById('total-price').textContent = `Total: Rs. ${total.toFixed(2)}`;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+            } else {
+                alert(`Your total is Rs. ${total.toFixed(2)}. Thank you for your purchase!`);
+                cart = []; 
+                total = 0;
+                updateCart();
+            }
+        }
+    </script>
+ 
+
+    <!--footer-->
+<footer class="footer">
+   
+       <p>&copy; 2024 Dine Square | Developed by Kasuni Prabodha | All Rights Reserved</p>
+
+</footer>
+
+</body>
+</html>

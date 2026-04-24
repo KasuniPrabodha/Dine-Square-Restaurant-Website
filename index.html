@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Profile - Dine Square</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile-container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .profile-container h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .profile-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .profile-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .profile-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: rgb(243, 108, 18);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .profile-container button:hover {
+            background-color: rgb(200, 90, 15);
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Welcome to Dine Square</h1>
+        <p>Please fill out your profile to continue</p>
+        <form id="profileForm" onsubmit="saveProfile(event)">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@example.com" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="(+94) 00 000 0000" required>
+
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+
+    <script>
+        function saveProfile(event) {
+            event.preventDefault(); // Prevent form from submitting
+
+            // Retrieve form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            // Store data in localStorage
+            localStorage.setItem('customerName', name);
+            localStorage.setItem('customerEmail', email);
+            localStorage.setItem('customerPhone', phone);
+
+            // Redirect to the front page
+            window.location.href = 'final.html'; // Replace with your front page path
+        }
+    </script>
+</body>
+</html>

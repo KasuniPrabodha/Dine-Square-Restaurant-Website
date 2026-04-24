@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinner Menu - Dine Square</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .header {
+            background-color: rgb(243, 108, 18);
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            top: 90px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 100px;
+            max-width: 1600px;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            width: 300px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item h3 {
+            font-size: 24px;
+            margin: 10px 0;
+            color: rgb(243, 108, 18);
+        }
+
+        .menu-item p {
+            font-size: 16px;
+            margin: 10px 15px;
+        }
+
+        .menu-item .price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        .but{
+            background-color: rgb(248, 53, 53);
+            border-radius: 0px;
+            box-shadow: none;
+            margin-bottom: 20px;
+            padding: 4px 10px 4px 10px;
+        }
+        .form-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+                }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+                  }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+             }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            color: #333;
+            cursor: pointer;
+               }
+
+        .buy-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+                }
+
+        .buy-form input,
+        .buy-form select,
+        .buy-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+                 }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+               }
+
+        button:hover {
+            background-color: #0056b3;
+                    }
+                    .blur-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 20px;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-menu ul {
+           list-style: none;
+           display: flex;
+           gap: 20px;
+           margin: 0;
+           padding: 0;
+        }
+        .nav-menu ul li {
+           display: inline;
+           padding-right:120px;
+         }
+        .nav-menu ul li a {
+           text-decoration: none;
+           color: #333;
+           font-weight: bold;
+           font-size: 1em;
+           transition: color 0.3s ease;
+        }
+        .nav-menu ul li a:hover {
+           color: rgb(243, 108, 18);
+        }
+        .order-confirmation {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #28a745;
+            color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            z-index: 1100;
+            text-align: center;
+        }
+
+        .order-confirmation button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .order-confirmation button:hover {
+            background-color: #ddd;
+        }
+        .footer {
+           background-color: #333;
+           color: #fff;
+           text-align: center;
+           padding: 10px 0;
+           position: relative;
+           bottom: 0;
+           width: 100%;
+           margin-top: 270px;
+         }
+    </style>
+</head>
+<body>
+    <header class="blur-header">
+        <div class="header-container">
+          <nav class="nav-menu">
+            <ul>
+              <li><a href="FINAL.html">Home</a></li>
+              <li><a href="AboutStory.html">About</a></li>
+              <li><a href="Reservation.html">Reservations</a></li>
+              <li><a href="GiftCards.html">Gift Cards</a></li>
+              <li><a href="Gallery.html">Gallery</a></li>
+              <li><a href="CustomerReviews.html">Customer Reviews</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <div class="header">
+        <h1>Lunch Menu</h1>
+        <p>A selection of delicious curries, grilled dishes, and rice meals for a fulfilling lunch..</p>
+    </div>
+
+    <div class="menu-container">
+
+        <div class="menu-item">
+            <img src="photos/redRice.jpg" alt="redRice">
+            <h3>Sri Lankan Red Rice</h3>
+            <p>Sri Lankan red rice is a nutritious, slightly nutty variety of rice with a reddish-brown hue, often served with curries and flavorful side dishes</p>
+            <div class="price">Rs.500.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/whiteRice.webp" alt="Whiterice">
+            <h3>Sri Lankan White Rice</h3>
+            <p>Sri Lankan white rice is a soft, fragrant staple commonly served with curries and various traditional dishes</p>
+            <div class="price">Rs.500.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/chickencurry.jpg" alt="Chicken">
+            <h3>Chicken Curry</h3>
+            <p>A flavorful dish made with tender chicken simmered in a rich, aromatic blend of spices, delivering a bold and fiery taste.            </p>
+            <div class="price">Rs.200.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/Fish.jpg" alt="Fish">
+            <h3>Fish Curry</h3>
+            <p>A savory dish made with tender fish cooked in a spiced, tangy curry sauce, often featuring coconut milk and local herbs            </p>
+            <div class="price">Rs.150.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/ambulthiyal.jpg" alt="fish2">
+            <h3>Maalu Abulthiyal</h3>
+            <p>A tangy, spicy Sri Lankan dish made with fish simmered in a flavorful mixture of tamarind, spices, and herbs</p>
+            <div class="price">Rs.180.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/DhalCurry.jpg" alt="dhal">
+            <h3>Dhal Curry</h3>
+            <p>a creamy, spiced lentil dish cooked with coconut milk and tempered with aromatic spices</p>
+            <div class="price">Rs.130.00</div>
+            <div><button  onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/polos.jpg" alt="polos">
+            <h3>Jack Fruit Curry[Polos]</h3>
+            <p>Jackfruit curry is a hearty dish made with tender jackfruit chunks cooked in a rich, spiced coconut gravy</p>
+            <div class="price">Rs.140.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/moju.jpg" alt="moju">
+            <h3>Brinjal Moju[Wambatu Moju]</h3>
+            <p>a sweet and tangy dish of fried eggplant mixed with spices, onions, and vinegar            </p>
+            <div class="price">Rs.130.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/gotukola.JPG" alt="gotukola">
+            <h3>Gotukola Sambol</h3>
+            <p>A fresh, healthy salad made with finely chopped gotukola leaves, coconut, and lime</p>
+            <div class="price">Rs.120.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/kottu.jpg" alt="Chicken_Kottu">
+            <h3>Chicken Kottu</h3>
+            <p>A flavorful Sri Lankan dish of chopped roti stir-fried with chicken, vegetables, and spices</p>
+            <div class="price">Rs.900.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/cheesekottu.jpg" alt="Cheese_kottu">
+            <h3>Cheese Kottu</h3>
+            <p>a rich Sri Lankan dish of chopped roti stir-fried with cheese, vegetables, and spices</p>
+            <div class="price">Rs.1200.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/vegekottu.jpg" alt="Vege_kottu">
+            <h3>Vegetable Kottu</h3>
+            <p>A tasty Sri Lankan dish made with chopped roti stir-fried with mixed vegetables and aromatic spices.</p>
+            <div class="price">Rs.850.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/seafoodkottu.png" alt="Seafood Kottu">
+            <h3>Seafood Kottu</h3>
+            <p>A flavorful Sri Lankan dish made with chopped roti stir-fried with a mix of seafood, vegetables, and spices.</p>
+            <div class="price">Rs.1200.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/prawns.jpg" alt="Prawns">
+            <h3>Devilled Prawns</h3>
+            <p>Spicy, stir-fried prawns cooked with a tangy blend of sauces, peppers, and aromatic spices.</p>
+            <div class="price">Rs.450.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/crab.jpg" alt="Crab_Curry">
+            <h3>Sri Lankan Crab Curry</h3>
+            <p>A rich, flavorful dish made with fresh crab simmered in a spiced coconut milk gravy</p>
+            <div class="price">Rs.550.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/cuttlefish.webp" alt="Cuttlefish">
+            <h3>Fried Cuttle Fish</h3>
+            <p>Crispy, golden-brown cuttlefish cooked with spices, perfect as a savory snack or appetizer</p>
+            <div class="price">Rs.450.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/cutlets.jpg" alt="cutlets">
+            <h3>Fish Cutlets</h3>
+            <p>Crispy, deep-fried patties made with flaked fish, mashed potatoes, and spices</p>
+            <div class="price">Rs.70.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/samosa.jpg" alt="samosa">
+            <h3>Vegetable Samosa</h3>
+            <p>Crispy pastries filled with spiced vegetables, like potatoes and peas, served as a tasty snack or appetizer            </p>
+            <div class="price">Rs.120.00</div>
+            <div><button onclick="toggleForm()"class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/ulunduwade.jpg" alt="ulundu wade">
+            <h3>Ulundu Vadai</h3>
+            <p>Crispy, golden South Indian fritter made from urad dal, often served with chutney or sambar</p>
+            <div class="price">Rs.100.00</div>
+            <div><button onclick="toggleForm()"class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/watalappan.jpg" alt="Watalappan">
+            <h3>Watalappan</h3>
+            <p>Creamy Sri Lankan dessert made with jaggery, coconut milk, and spices like cardamom</p>
+            <div class="price">Rs.300.00</div>
+            <div><button onclick="toggleForm()"class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/kithulpudding.jpg" alt="Pudding">
+            <h3>Kithul Pudding</h3>
+            <p>A sweet Sri Lankan dessert made from kithul treacle and coconut milk, with a smooth, rich texture</p>
+            <div class="price">Rs.300.00</div>
+            <div><button onclick="toggleForm()"class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/pancake.jpg" alt="cococnut_Pancakes">
+            <h3>Coconut Treacle Pancake</h3>
+            <p>A Sri Lankan treat with a soft pancake filled with sweet coconut and kithul treacle</p>
+            <div class="price">Rs.200.00</div>
+            <div><button onclick="toggleForm()"class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/kingCoconut.jpg" alt="king_coconut">
+            <h3>King Coconut Water</h3>
+            <p>A refreshing, naturally sweet drink from orange-hued coconuts, popular in Sri Lanka            </p>
+            <div class="price">Rs.350.00</div>
+            <div><button onclick="toggleForm()"class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/milo.jpg" alt="Milo">
+            <h3>Iced Milo</h3>
+            <p>A refreshing citrus drink, typically made with lime, ice, and soda or water</p>
+            <div class="price">Rs.200.00</div>
+            <div><button onclick="toggleForm()"class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/belimal.jpg" alt="belimal">
+            <h3>Belimal [Herbal Drink]</h3>
+            <p>A soothing Sri Lankan beverage made from bael flowers, known for its health benefits</p>
+            <div class="price">Rs.150.00</div>
+            <div><button onclick="toggleForm()" class="but" type="submit">BUY</button></div>
+        </div>
+
+        <div class="menu-item">
+            <img src="photos/ranawara.jpg" alt="ranawara">
+            <h3>Ranawara [Herbal Drink]</h3>
+            <p>A Sri Lankan beverage made from ranawara flowers, valued for its calming and health-boosting properties</p>
+            <div class="price">Rs.150.00</div>
+            <div><button onclick="toggleForm()"class="but" type="submit">BUY</button></div>
+        </div>
+    </div>
+
+    <div class="order-confirmation" id="orderConfirmation">
+        <p>Your order has been placed successfully!</p>
+        <button onclick="closeConfirmation()">Close</button>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const formOverlay = document.getElementById('formOverlay');
+            formOverlay.style.display = formOverlay.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function placeOrder(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+            const formOverlay = document.getElementById('formOverlay');
+            const orderConfirmation = document.getElementById('orderConfirmation');
+
+            formOverlay.style.display = 'none'; // Hide the form overlay
+            orderConfirmation.style.display = 'block'; // Show the confirmation banner
+        }
+
+        function closeConfirmation() {
+            const orderConfirmation = document.getElementById('orderConfirmation');
+            orderConfirmation.style.display = 'none'; // Hide the confirmation banner
+        }
+    </script>
+
+<div class="form-overlay" id="formOverlay">
+    <div class="form-container">
+      <span class="close-btn" onclick="toggleForm()">&times;</span>
+      <h1>DINE ONLINE...!</h1>
+      <form class="buy-form" onsubmit="placeOrder(event)">
+    
+        <label for="Address">Delivery Address</label>
+        <input type="address" id="address" name="address" placeholder="Street Address" required>
+        <input type="address" id="address" name="address" placeholder="City" required>
+
+        <label for="message">Comments</label>
+        <textarea id="message" name="message"></textarea>
+
+        <button type="submit">Buy Now</button>
+      </form>
+    </div>
+</div>
+
+<!--footer-->
+<footer class="footer">
+    
+    <p>&copy; 2024 Dine Square | Developed by Kasuni Prabodha | All Rights Reserved</p>
+
+</footer>
+
+</body> 
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Location</title>
+    <style>
+        body{
+                background-image: url('ppp.jpg');
+                background-size:cover;
+                background-position:center;
+                background-repeat:no-repeat;
+                position: relative;
+                height: 180vh;
+                }
+        .map-container {
+           
+            width: 100%;
+            
+        }
+        iframe {
+            border: 0;
+            width: 46%;
+            height: 350px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            float: right;
+        }
+        body{
+                background-image: url('photos/ppp.jpg');
+                background-size:cover;
+                background-position:center;
+                background-repeat:no-repeat;
+                position: relative;
+                }
+        .topic{
+                position: relative;
+                text-align: center;
+                font-size: 100px;
+                text-decoration: overline;
+                margin-top: 70px;
+                padding-top: 0;
+            }
+            .blur-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 20px;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-menu ul {
+           list-style: none;
+           display: flex;
+           gap: 20px;
+           margin: 0;
+           padding: 0;
+        }
+        .nav-menu ul li {
+           display: inline;
+           padding-right:120px;
+         }
+        .nav-menu ul li a {
+           text-decoration: none;
+           color: #333;
+           font-weight: bold;
+           font-size: 1em;
+           transition: color 0.3s ease;
+        }
+        .nav-menu ul li a:hover {
+           color: rgb(243, 108, 18);
+        }
+        .number{
+          color:white;
+          backdrop-filter:blur(10px);
+          text-align: center;
+          margin: 0;
+          font-size: 1em;
+          padding-top: 2px;
+          padding-bottom: 2px;
+          width: 100%;
+          position: fixed;
+          top: 680px;
+        }
+        .working-hours {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            width: 46%;
+            float: left;
+            text-align: left;
+            margin: 0 auto;
+        }
+
+        .working-hours h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .day {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .day:last-child {
+            border-bottom: none;
+        }
+
+        .day span {
+            font-size: 16px;
+        }
+        .staff{
+            float: left;
+        }
+        .chefs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+            float: left;
+        }
+
+        .chef-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 35px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .chef-card:hover {
+            transform: scale(1.05);
+        }
+
+        .chef-card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .chef-card p {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .chef-photo {
+            border-radius: 50%;
+            width: 150px;
+            height: 120px;
+            margin-bottom: 15px;
+        }
+        .story{
+            float: left;
+        }
+        .para1{
+            float: left;
+            background-color: #ddd;
+            padding: 5px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="blur-header">
+        <div class="header-container">
+          <nav class="nav-menu">
+            <ul>
+              <li><a href="FINAL.html">Home</a></li>
+              <li><a href="AboutStory.html">About</a></li>
+              <li><a href="Reservation.html">Reservations</a></li>
+              <li><a href="GiftCards.html">Gift Cards</a></li>
+              <li><a href="Gallery.html">Gallery</a></li>
+              <li><a href="CustomerReviews.html">Customer Reviews</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <div class="topic"><b>About Us<i class='bx bxs-bowl-hot'></i></b></div>
+   
+    <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14364.684909537531!2d80.54890133945158!3d5.943170047160147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae139271817428d%3A0x28c3af9bff3a6bc3!2sBrown&#39;s%20Hill!5e1!3m2!1sen!2slk!4v1777028102795!5m2!1sen!2slk" 
+        width="600" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    </div>
+
+    <div class="working-hours">
+        <h2>Our Working Hours</h2>
+        <div class="day">
+            <span>Monday:</span>
+            <span>10:00 AM - 10:00 PM</span>
+        </div>
+        <div class="day">
+            <span>Tuesday:</span>
+            <span>10:00 AM - 10:00 PM</span>
+        </div>
+        <div class="day">
+            <span>Wednesday:</span>
+            <span>10:00 AM - 10:00 PM</span>
+        </div>
+        <div class="day">
+            <span>Thursday:</span>
+            <span>10:00 AM - 10:00 PM</span>
+        </div>
+        <div class="day">
+            <span>Friday:</span>
+            <span>10:00 AM - 11:00 PM</span>
+        </div>
+        <div class="day">
+            <span>Saturday:</span>
+            <span>10:00 AM - 11:00 PM</span>
+        </div>
+        <div class="day">
+            <span>Sunday:</span>
+            <span>Closed</span>
+        </div>
+    </div>
+
+    <div>
+        <div class="staff"><h1><b>Meet Our Talented Chefs-: </b></h1></div>
+        <div class="chefs-container">
+            <div class="chef-card">
+                <img src="photos/sarathchandrasiri.jpg" alt="Chef 1" class="chef-photo">
+                <h3>Chef Sarath Chandrasiri </h3>
+                <p><strong>Qualification:</strong> Culinary Arts Diploma, Le Cordon Bleu</p>
+                <p><strong>Experience:</strong> 12 years in fine dining</p>
+            </div>
+    
+            <div class="chef-card">
+                <img src="photos/sarani.jpg" alt="Chef 2" class="chef-photo">
+                <h3>Chef Sarani Shenal</h3>
+                <p><strong>Qualification:</strong> Master of Culinary Arts, CIA</p>
+                <p><strong>Experience:</strong> 8 years in Italian cuisine</p>
+            </div>
+    
+            <div class="chef-card">
+                <img src="photos/LIONAL.jpg" alt="Chef 3" class="chef-photo">
+                <h3>Chef Lional De Silva</h3>
+                <p><strong>Qualification:</strong> Pastry Chef Certification, Culinary Institute of America</p>
+                <p><strong>Experience:</strong> 10 years in desserts and pastries</p>
+            </div>
+    
+            <div class="chef-card">
+                <img src="photos/Mela.webp" alt="Chef 4" class="chef-photo">
+                <h3>Chef Mela Samanthurai</h3>
+                <p><strong>Qualification:</strong> Degree in Hospitality Management</p>
+                <p><strong>Experience:</strong> 5 years in restaurant management</p>
+            </div>
+        </div>    
+    </div>
+
+    <div  class="story"><h1><b>Our Story-:</b></h1></div>
+
+    <div><p class="para1">Welcome to DINE SQUARE, where dining transcends the ordinary. Our story
+        began with a vision: to create a space where elegance, refinement, and culinary
+        artistry come together to offer guests an unforgetable experience. Inspired
+        by the world's finest dining traditions, DINE SQUARE is a sanctuary for those
+        who appreciate the beauty of exquisite cuisine, exceptional service, and an 
+        ambiance of timeless sophistication, Since 2010...<br><br><br>Each dish on our menu is a masterpiece, crafted by chefs who are as passionate 
+            about their art as they are skilled. Drawing inspiration from both classic and 
+            contemporary techniques, we source the hightest-quality ingredients from around 
+            the world to bring you flavors that are as refined as they are memorable. 
+            From meticulously plated appetizers to decadent desserts, every bite tells 
+            a story of dedication, creativity, and elegance. The ambiance at DINE SQUARE 
+            is designed to transport you into a world of luxury. Soft lighting, rich 
+            textures, and tasteful decor create an intimate atmosphere where conversation 
+            flows as easily as the fine wines we serve. Each detail, from the table 
+            setting to the art on the walls, has been thoughtfully chosen to complement the 
+            sophistication of our cuisine, making your visit a true sensory experience.<br>Our commitment to ecellence extends beyond our food & decor. We believe 
+            in a level of service that is as graceful as it is attentive, ensuring 
+            every guest feels like royalty from the moment they step through our doors. 
+            At DINE SQUARE, we invite you to indulge in an evening where elegance is 
+            not just seen but felt, where every moment is crafted to linger in your 
+            memory long after you leave.</p>
+    </div>
+
+    <!--footer-->
+    <footer>
+        <div class="number">
+            <p>&copy; 2024 Dine Square | Developed by Kasuni Prabodha | All Rights Reserved</p>
+        </div>
+    </footer>
+
+</body>
+</html>
