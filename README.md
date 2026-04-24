@@ -16,9 +16,9 @@ Smart Dining: The Future of Restaurant Experiences. A modern, user-friendly rest
 - **Deployment:** GitHub Pages
 
 ## 📸 Screenshots
-![Home Page](path/to/screenshot1.png)
-![Reservations](path/to/screenshot2.png)
-![GiftCrads](path/to/screenshot3.png)
+![Home Page](screenshot/Home_Page.png)
+![Reservations](screenshots/Reservations.png)
+![GiftCrads](screenshots/GiftCards.png)
 
 ## 🗺️ Location
 Located at: **56/B BrownsHill, BeachRd, Matara.**
