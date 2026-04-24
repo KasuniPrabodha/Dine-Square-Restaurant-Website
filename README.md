@@ -2,6 +2,10 @@
 
 Smart Dining: The Future of Restaurant Experiences. A modern, user-friendly restaurant front-end solution designed for elegance and efficiency.
 
+## 📺 Live Demo
+You can view the live interface (UI) of this website here:
+[Dine Square Restaurant - Live Website](https://kasuniprabodha.github.io/Dine-Square-Restaurant-Website/)
+
 ## ✨ Features
 - **User Profiles:** Personalized experience starting with profile creation.
 - **Table Reservations:** Seamless booking with date, time, and guest count.
