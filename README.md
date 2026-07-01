@@ -24,8 +24,3 @@ You can view the live interface (UI) of this website here:
 ![Reservations](Screenshots/Reservations.png)
 ![GiftCrads](Screenshots/GiftCards.png)
 
-## 🗺️ Location
-Located at: **56/B BrownsHill, BeachRd, Matara.**
-
----
-© 2024 Dine Square | Developed by Kasuni Prabodha
